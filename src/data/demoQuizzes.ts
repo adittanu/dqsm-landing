@@ -5,59 +5,67 @@ export interface QuizQuestion {
   image?: string;
 }
 
+export interface QuizResult {
+  type: string;
+  title: string;
+  image: string;
+  description: string;
+}
+
 export interface DemoQuiz {
   slug: string;
   title: string;
   description: string;
   theme: string;
   featuredImage: string | null;
+  sampleNote?: boolean;
   questions: QuizQuestion[];
+  results?: QuizResult[];
 }
-
 export const demoQuizzes: DemoQuiz[] = [
   {
     slug: 'personality',
-    title: 'Personality Quiz',
+    title: 'Find out your Personality Type',
     description:
       'In this Personality quiz, you would be assessed on your Personal, Intellectual, and Emotional affinity. There are 3 personality types- Adventurous, Creative & Empathetic Individuals. Your answers to the following questions would determine your personality type.',
     theme: 'sigma',
     featuredImage: '/images/sigma-img.png',
+    sampleNote: true,
     questions: [
       {
         text: 'How do you prefer to spend your weekends?',
         type: 'radio',
-        options: [
-          'Exploring new places',
-          'Engaging in artistic activities',
-          'Volunteering for a charitable cause',
-          'Face-to-face conversations',
-          'Writing or journaling',
-          'Participating in group activities',
-        ],
+        options: ['Exploring new places', 'Engaging in artistic activities', 'Volunteering for a charitable cause'],
       },
       {
         text: 'How do you handle challenges?',
         type: 'radio',
-        options: [
-          'Taking risks and embracing the unknown',
-          'Finding innovative solutions',
-          'Supporting others and seeking collaborative solutions',
-          'Outdoor and nature settings',
-          'Artistic and imaginative spaces',
-          'Supportive and community-oriented environments',
-        ],
+        options: ['Taking risks and embracing the unknown', 'Finding innovative solutions', 'Supporting others and seeking collaborative solutions'],
       },
       {
         text: 'How do you express yourself?',
         type: 'radio',
-        options: [
-          'Trying new hobbies or activities',
-          'Creating art or writing',
-          'Listening and supporting others',
-          'Adventure and exploration',
-          'Fantasy and science fiction',
-          'Drama and emotional storytelling',
-        ],
+        options: ['Trying new hobbies or activities', 'Creating art or writing', 'Listening and supporting others'],
+      },
+    ],
+    results: [
+      {
+        type: 'Adventurous',
+        title: "You're a Person of Adventure",
+        image: '/images/Adventurous.png',
+        description: 'Adventurous individuals are bold, energetic, and always seeking new experiences. They thrive on excitement and are willing to take risks to explore the unknown. They inspire others with their courage and zest for life.',
+      },
+      {
+        type: 'Creative',
+        title: "You're a Person of Creativity",
+        image: '/images/Creative.png',
+        description: 'Creative individuals have a vivid imagination and a unique way of seeing the world. They express themselves through art, writing, and innovative thinking. They are often drawn to beauty and originality in everything they do.',
+      },
+      {
+        type: 'Empathetic',
+        title: "You're a Person of Empathy",
+        image: '/images/Empathy.png',
+        description: 'Empathetic individuals have a deep capacity to understand and share the feelings and experiences of others. They are compassionate, caring, and attentive listeners who genuinely care about the well-being of those around them. They excel in creating supportive and nurturing environments, and they are often driven by a strong desire to help and make a positive difference in the lives of others.',
       },
     ],
   },
