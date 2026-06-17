@@ -38,7 +38,9 @@ export default function App() {
         <Route path="/themes" element={<Themes />} />
         <Route path="/themes/:id" element={<ThemeDetail />} />
         <Route path="/docs" element={<Docs />} />
+        <Route path="/docs/:categorySlug" element={<Docs />} />
         <Route path="/docs/:categorySlug/:articleSlug" element={<DocArticle />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/login" element={<Login />} />
