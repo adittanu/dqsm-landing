@@ -1,6 +1,5 @@
 import { Hero } from '@/components/sections/Hero';
 import { QuizContainer } from '@/components/sections/QuizContainer';
-import { BrandLogos } from '@/components/sections/BrandLogos';
 import { DemoGrid } from '@/components/sections/DemoGrid';
 import { FeatureRowSection } from '@/components/sections/FeatureRow';
 import { Features } from '@/components/sections/Features';
