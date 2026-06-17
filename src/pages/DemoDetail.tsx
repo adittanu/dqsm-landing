@@ -1,10 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { demos } from '@/data/demos';
+import { demoQuizzes } from '@/data/demoQuizzes';
+import { DemoQuiz } from '@/components/sections/DemoQuiz';
 
 export function DemoDetail() {
   const { slug } = useParams<{ slug: string }>();
   const demo = demos.find((d) => d.id === slug);
+  const quiz = demoQuizzes.find((q) => q.slug === slug);
 
   if (!demo) {
     return (
@@ -21,45 +24,44 @@ export function DemoDetail() {
   }
 
   return (
-    <section className="bg-ink-100/40 py-16">
+    <section className="py-16">
       <div className="container-x">
         <Link to="/demos" className="inline-flex items-center gap-2 text-sm font-semibold text-ink-500 hover:text-brand-600">
           <ArrowLeft className="h-4 w-4" /> All demos
         </Link>
-        <div className="mt-6 grid items-start gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft">
-            <img src={demo.image} alt={demo.title} className="w-full" />
-          </div>
-          <div>
-            <span className="eyebrow mb-3">Live demo</span>
-            <h1 className="mt-3 text-3xl font-bold text-ink-900 font-display">{demo.title}</h1>
-            <p className="mt-4 text-ink-500">
-              This is a preview of the {demo.title.toLowerCase()} built with Quiz and Survey Master. Use the interactive preview to explore the flow.
-            </p>
-            <div className="mt-6 space-y-3">
-              <Link
-                to="/pricing"
-                className="flex items-center justify-center gap-2 rounded-full bg-brand-600 px-5 py-3 font-semibold text-white shadow-brand hover:bg-brand-700"
-              >
-                Build your own <ExternalLink className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/demos"
-                className="flex items-center justify-center gap-2 rounded-full border border-ink-200 px-5 py-3 font-semibold text-ink-800 hover:border-ink-300"
-              >
-                Browse more demos
-              </Link>
+
+        <div className="mt-6">
+          <span className="eyebrow mb-3">Live demo</span>
+          <h1 className="mt-3 text-3xl font-bold text-ink-900 font-display">{demo.title}</h1>
+
+          {/* Interactive quiz */}
+          {quiz ? (
+            <div className="mt-8 overflow-hidden rounded-2xl border border-ink-100 shadow-soft">
+              <DemoQuiz quiz={quiz} />
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-4 text-sm">
-              <div className="rounded-xl border border-ink-100 bg-white p-4">
-                <p className="text-ink-500">Question types</p>
-                <p className="mt-1 text-lg font-semibold text-ink-900">5+</p>
-              </div>
-              <div className="rounded-xl border border-ink-100 bg-white p-4">
-                <p className="text-ink-500">Setup time</p>
-                <p className="mt-1 text-lg font-semibold text-ink-900">~10 min</p>
+          ) : (
+            <div className="mt-8 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft">
+              <img src={demo.image} alt={demo.title} className="w-full" />
+              <div className="p-6 text-center">
+                <p className="text-ink-500">Interactive preview not available for this demo yet.</p>
               </div>
             </div>
+          )}
+
+          {/* CTA */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              to="/pricing"
+              className="flex items-center justify-center gap-2 rounded-full bg-brand-600 px-5 py-3 font-semibold text-white shadow-brand hover:bg-brand-700"
+            >
+              Build your own <ExternalLink className="h-4 w-4" />
+            </Link>
+            <Link
+              to="/demos"
+              className="flex items-center justify-center gap-2 rounded-full border border-ink-200 px-5 py-3 font-semibold text-ink-800 hover:border-ink-300"
+            >
+              Browse more demos
+            </Link>
           </div>
         </div>
       </div>
