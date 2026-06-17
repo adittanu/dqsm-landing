@@ -101,7 +101,7 @@ export function Docs() {
                   <ul className="space-y-2">
                     {c.articles.map((article) => (
                       <li key={article.id}>
-                        <Link to={article.slug} className="group/article flex items-start gap-3 rounded-lg p-2 -mx-2 transition hover:bg-brand-50">
+                        <Link to={`/docs/${c.id}/${article.id}`} className="group/article flex items-start gap-3 rounded-lg p-2 -mx-2 transition hover:bg-brand-50">
                           <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-400" />
                           <div>
                             <span className="text-sm font-medium text-ink-800 group-hover/article:text-brand-600">{article.title}</span>

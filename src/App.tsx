@@ -9,6 +9,7 @@ import { DemoDetail } from '@/pages/DemoDetail';
 import { Themes } from '@/pages/Themes';
 import { ThemeDetail } from '@/pages/ThemeDetail';
 import { Docs } from '@/pages/Docs';
+import { DocArticle } from '@/pages/DocArticle';
 import { Blogs } from '@/pages/Blogs';
 import { Blog } from '@/pages/Blog';
 import { BlogPost } from '@/pages/BlogPost';
@@ -37,7 +38,7 @@ export default function App() {
         <Route path="/themes" element={<Themes />} />
         <Route path="/themes/:id" element={<ThemeDetail />} />
         <Route path="/docs" element={<Docs />} />
-        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/docs/:categorySlug/:articleSlug" element={<DocArticle />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/login" element={<Login />} />
